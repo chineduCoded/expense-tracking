@@ -14,17 +14,16 @@
   margin: 0;
   padding: 0;
 }
-
 .App {
   text-align: center;
   padding: 4em 0;
 }
 
 .bg-yellow {
-  background-color: vart( --color-yellow);
+  background-color: var(--color-yellow);
 }
 
-.bd-purple {
+.bg-purple {
   background-color: var(--color-purple);
 }
 
