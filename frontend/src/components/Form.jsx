@@ -1,10 +1,25 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useAddTransactionMutation } from '../features/expenseApi'
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
 import { List } from './List'
 
+const schema = yup.object({
+  name: yup.string().required(),
+  gender: yup.string(),
+  amount: yup.number().required().positive(),
+})
+
 export const Form = () => {
-  const { register, handleSubmit, resetField } = useForm()
+  const {
+    register,
+    handleSubmit,
+    resetField,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  })
   const [addTransaction] = useAddTransactionMutation()
 
   const onSubmit = async (data) => {
@@ -22,12 +37,16 @@ export const Form = () => {
           <div className="input-group">
             <input
               type="text"
-              {...register('name')}
+              {...register('name', { required: true })}
               placeholder="Salary, House rent, etc"
               className="form-input"
             />
+            <p style={{ color: 'red' }}>{errors.name?.message}</p>
           </div>
-          <select className="form-input" {...register('type')}>
+          <select
+            className="form-input"
+            {...register('type', { required: true })}
+          >
             <option value="Investment" defaultValue="Investment">
               Investment
             </option>
@@ -37,10 +56,11 @@ export const Form = () => {
           <div className="input-group">
             <input
               type="text"
-              {...register('amount')}
-              placeholder="Amout"
+              {...register('amount', { required: true })}
+              placeholder="Amount"
               className="form-input"
             />
+            <p style={{ color: 'red' }}>{errors.amount?.message}</p>
           </div>
           <div className="submit-btn">
             <button
