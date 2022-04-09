@@ -53,5 +53,9 @@ export const  chartData = (transaction, custom) => {
 }
 
 export const getTotal = (transaction) => {
-  return _.sum(getSum(transaction))
+  const formatter = new Intl.NumberFormat({
+    style: 'currency',
+    currency: 'NGN'
+  })
+  return formatter.format(_.sum(getSum(transaction)))
 }
