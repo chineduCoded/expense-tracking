@@ -1,0 +1,28 @@
+const mongoose = require("mongoose")
+
+
+
+// Categories => Fields => ['type', 'color']
+
+const categorySchema = new mongoose.Schema({
+    type: {type: String, default: "Investment"},
+    color: {type: String, default: "#FCBE44"}
+}, {
+    timestamps: true
+})
+
+// Transaction => Fields => ['name', 'type', 'amount', 'date']
+const transactionSchema = new mongoose.Schema({
+    name: {type: String, default: "Anonymous"},
+    type: {type: String, default: "Investment"},
+    amount: {type: Number},
+    date: {type: Date, default: Date.now}
+}, {
+    timestamps: true
+})
+
+const Categories = mongoose.model("categories", categorySchema)
+const Transaction = mongoose.model("transaction", transactionSchema)
+
+exports.default = Transaction
+module.exports = {Categories, Transaction}
