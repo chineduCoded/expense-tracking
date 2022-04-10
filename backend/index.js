@@ -16,7 +16,7 @@ app.use(express.json())
 app.use(cors())
 
 // use routes
-app.use("/", (req, res) => {
+app.get("/", (req, res) => {
     res.send("Welcome to my expense Tracker")
 })
 app.use("/api/categories", require("./routes/categoryRoutes"))
