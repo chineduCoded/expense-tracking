@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 
-const baseURI = "http://localhost:8080"
+const baseURI = process.env.NODE_ENV === "production" ? "https://expense-tracker-eli.herokuapp.com" : "http://localhost:8080"
 export const expenseApi = createApi({
     reducerPath: "expenseApi",
     baseQuery: fetchBaseQuery({ baseUrl: baseURI}),
