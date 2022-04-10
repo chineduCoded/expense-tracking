@@ -17,7 +17,7 @@ app.use(cors())
 
 // use routes
 app.get("/", (req, res) => {
-    res.send("Welcome to my expense Tracker")
+    res.send("Welcome to my expense Tracker API")
 })
 app.use("/api/categories", require("./routes/categoryRoutes"))
 app.use("/api/transaction", require("./routes/transactionRoutes"))
