@@ -65,7 +65,7 @@ export const Form = () => {
           <div className="submit-btn">
             <button
               type="submit"
-              className="border py-2 text-white bg-indigo-500 w-full rounded"
+              className="border py-2 text-white bg-indigo-500 w-full"
             >
               Make Transaction
             </button>

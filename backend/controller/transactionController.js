@@ -31,7 +31,7 @@ const getTransaction = async (req, res) => {
 
 // DELETE:http://localhost:8080/api/transaction
 const deleteTransaction = async (req, res) => {
-    if (!req.body) return res.status(400).json({ message: "Requst body body not Found"})
+    if (!req.body) return res.status(400).json({ message: "Requst body not Found"})
     await Transaction.deleteOne(req.body, function(err){
         if(!err) res.json("Record Deleted..!")
     }).clone().catch (function(err){
