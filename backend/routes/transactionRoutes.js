@@ -4,6 +4,6 @@ const { createTransaction, getTransaction, deleteTransaction } = require("../con
 router.route("/")
     .post(createTransaction)
     .get(getTransaction)
-router.route("/:id")
+    .delete(deleteTransaction)
 
 module.exports = router
